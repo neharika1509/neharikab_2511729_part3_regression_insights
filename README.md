@@ -25,6 +25,7 @@ the file data/business_regression_data.xlsx consiste of:
 ### Description of All Variables
 
 | Variable | Type | Description |
+|---|---|---|
 | `store_id` | Identifier | Unique store code (STR-1001 to STR-1080) |
 | `month` | Date | Month of observation (Jan–Apr 2025) |
 | `region` | Categorical | Geographic region: East, North, South, West |
@@ -50,7 +51,7 @@ the file data/business_regression_data.xlsx consiste of:
 ### Independent Variables (Predictors used in final model)
 
 | Variable | Type | Role in Model |
-
+|---|---|---|
 | footfall | Numerical | Strongest predictor of sales; captures customer demand |
 | marketing_spend | Numerical | Controllable business lever; drives customer acquisition |
 | avg_discount_pct | Numerical | Pricing strategy lever; tested but not significant |
@@ -63,7 +64,7 @@ the file data/business_regression_data.xlsx consiste of:
 ### Variables Excluded from Regression
 
 | Variable | Reason |
-
+|---|---|
 | store_id | Unique identifier — no predictive value |
 | month | Only 4 time points — insufficient to model time trends |
 | monthly_profit | Downstream outcome of sales — using it would cause circular logic |
@@ -101,7 +102,7 @@ A categorical variable were converted to binary dummy variables for use in regre
 ### region (4 categories → 3 dummies)
 
 | Region | reg_North | reg_South | reg_West |
-
+|---|---|---|---|
 | East | 0 | 0 | 0 |
 | North | 1 | 0 | 0 |
 | South | 0 | 1 | 0 |
@@ -118,7 +119,7 @@ Full dummy variable explanation is in outputs/model_equations.md.
 ## 6. Model Comparison Summary
 
 | Model | Predictors | R-squared | Significant Variables | Suitable For |
-
+|---|---|---|---|---|
 | Simple Model 1 (footfall) | 1 | **0.7363** (73.6%) | footfall *** | Understanding primary driver only |
 | Simple Model 2 (marketing) | 1 | **0.1672** (16.7%) | marketing_spend *** | Marketing ROI check only |
 | Multiple Regression | 12 | **0.8353** (83.5%) | 10 variables significant | Full business decision support |
@@ -174,7 +175,7 @@ Full business recommendation is in `outputs/final_recommendation.md`.
 
 ### Limitations
 | Limitation | Impact |
-
+|---|---|
 | Correlation ≠ causation | Regression shows association, not proof of cause and effect |
 | Short time window (4 months) | Cannot assess seasonality, year-on-year trends, or long-term effects |
 | 14 missing values imputed | Results may shift slightly with complete data |
