@@ -1,6 +1,6 @@
 # Model Equations & Dummy Variable Explanation
 
----
+
 
 ## 1. Simple Regression Equations
 
@@ -19,7 +19,7 @@ monthly_sales = 446,411 + 35.678 × footfall
 
 **Business reading:** Footfall is the single strongest predictor of sales. For every 1,000 additional customers entering a store, monthly sales increase by approximately £35,678. This suggests that efforts to drive in-store traffic (events, location, advertising) are strongly linked to revenue.
 
----
+
 
 ### Simple Model 2: Sales ~ Marketing Spend
 
@@ -28,7 +28,7 @@ monthly_sales = 560,777 + 2.130 × marketing_spend
 ```
 
 | Term | Value | Meaning |
-|---|---|---|
+
 | Intercept (β₀) | 560,777 | Baseline predicted sales when marketing spend = 0 |
 | Coefficient (β₁) | 2.130 | Each additional £1 in marketing spend adds £2.13 in sales |
 | R² | 0.1672 | Marketing spend alone explains **16.7%** of sales variance |
@@ -36,7 +36,7 @@ monthly_sales = 560,777 + 2.130 × marketing_spend
 
 **Business reading:** Marketing spend returns approximately £2.13 in sales per £1 spent when considered in isolation. However, the low R² shows that marketing spend alone is not a reliable predictor — its impact likely works *through* footfall and should be evaluated in combination with other factors.
 
----
+
 
 ## 2. Multiple Regression Equation
 
@@ -58,7 +58,7 @@ monthly_sales =   30,213
 
 **Overall model fit: R² = 0.8353 (83.5% of sales variance explained)**
 
----
+
 
 ## 3. Explanation of Each Coefficient
 
@@ -71,24 +71,20 @@ monthly_sales =   30,213
 | staff_count | 3,041 | 0.015 | ✅ Yes * | Each additional staff member adds ~£3,041 in sales; staffing levels matter |
 | inventory_availability_pct | 3,048 | < 0.001 | ✅ Yes *** | Each 1% improvement in stock availability adds £3,048; reducing stockouts drives revenue |
 | customer_rating | 14,214 | 0.003 | ✅ Yes ** | Each 1-point increase in customer rating associated with £14,214 more in monthly sales |
-| type_Airport | 42,282 | < 0.001 | ✅ Yes *** | Airport stores outperform Residential stores by £42,282/month on average |
-| type_High Street | 19,057 | 0.002 | ✅ Yes ** | High Street stores outperform Residential by £19,057/month |
-| type_Mall | 29,872 | < 0.001 | ✅ Yes *** | Mall stores outperform Residential by £29,872/month |
 | reg_North | 5,270 | 0.451 | ❌ No | North region not significantly different from East |
 | reg_South | 19,280 | 0.007 | ✅ Yes ** | South region stores sell £19,280 more than East on average |
 | reg_West | 18,017 | 0.004 | ✅ Yes ** | West region stores sell £18,017 more than East on average |
 
----
+
 
 ## 4. Dummy Variable Explanation
 
 ### What are dummy variables?
 
-Categorical variables (text labels like "Mall" or "South") cannot be used directly in a regression equation because regression requires numerical inputs. We convert each category into a **binary (0 or 1) variable** — called a dummy variable.
+Categorical variables (text labels like "South") cannot be used directly in a regression equation because regression requires numerical inputs. We convert each category into a **binary (0 or 1) variable** — called a dummy variable.
 
 ### How they were created
 
-**store_type** has 4 categories: Residential, High Street, Airport, Mall  
 **region** has 4 categories: East, North, South, West
 
 For each categorical variable, we create **(number of categories − 1)** dummy variables. One category is omitted — this is the **reference category**. Its effect is absorbed into the intercept.
@@ -96,23 +92,10 @@ For each categorical variable, we create **(number of categories − 1)** dummy 
 ### Reference Categories
 
 | Variable | Reference Category | Reason for Choice |
-|---|---|---|
-| store_type | **Residential** | Most common store type in the dataset; intuitive baseline |
+
 | region | **East** | Provides a stable geographic baseline for comparison |
 
-### Dummy variable table (store_type example)
 
-| Store Type | type_Airport | type_High Street | type_Mall |
-|---|---|---|---|
-| Residential | 0 | 0 | 0 |
-| Airport | 1 | 0 | 0 |
-| High Street | 0 | 1 | 0 |
-| Mall | 0 | 0 | 1 |
-
-> **Why not include all 4 categories?**  
-> Including all categories (e.g., also adding `type_Residential`) would create **perfect multicollinearity** — the four columns would always sum to 1, making it impossible for the regression to distinguish their individual effects. This is called the **dummy variable trap**. By dropping one (the reference), we avoid this and make all coefficients interpretable *relative to the reference group*.
-
----
 
 ## 5. Final Model Selected
 
@@ -124,7 +107,7 @@ This model was selected because:
 - Most key predictors are **statistically significant** at the 5% or stricter level
 - The model provides **actionable insights** for each business decision the leadership team is considering
 
----
+
 
 ## 6. Reason for Selecting the Final Model
 
