@@ -101,7 +101,7 @@ A categorical variable were converted to binary dummy variables for use in regre
 ### region (4 categories → 3 dummies)
 
 | Region | reg_North | reg_South | reg_West |
-|---|---|---|---|
+
 | East | 0 | 0 | 0 |
 | North | 1 | 0 | 0 |
 | South | 0 | 1 | 0 |
@@ -113,12 +113,12 @@ A categorical variable were converted to binary dummy variables for use in regre
 
 Full dummy variable explanation is in outputs/model_equations.md.
 
----
+
 
 ## 6. Model Comparison Summary
 
 | Model | Predictors | R-squared | Significant Variables | Suitable For |
-|---|---|---|---|---|
+
 | Simple Model 1 (footfall) | 1 | **0.7363** (73.6%) | footfall *** | Understanding primary driver only |
 | Simple Model 2 (marketing) | 1 | **0.1672** (16.7%) | marketing_spend *** | Marketing ROI check only |
 | Multiple Regression | 12 | **0.8353** (83.5%) | 10 variables significant | Full business decision support |
@@ -127,7 +127,7 @@ The multiple regression model explains **83.5% of the variation** in monthly sal
 
 Full comparison is in `analysis/model_comparison.md` and `outputs/regression_summary.xlsx`.
 
----
+
 
 ## 7. Final Model Selected
 
@@ -142,7 +142,7 @@ This model was selected because:
 
 The full model equation, coefficient interpretations, and selection rationale are documented in `outputs/model_equations.md`.
 
----
+
 
 ## 8. Business Recommendation
 
@@ -162,19 +162,19 @@ Based on the multiple regression model, the leadership team should prioritise th
 
 Full business recommendation is in `outputs/final_recommendation.md`.
 
----
+
 
 ## 9. Assumptions and Limitations
 
 ### Regression Assumptions
-- **Linearity:** The model assumes a linear relationship between each predictor and monthly sales. Non-linear relationships may exist but were not tested.
-- **Independence:** Observations are assumed to be independent. In practice, the same store appears across 4 months — this introduces mild autocorrelation that is not corrected for in this analysis.
-- **Homoscedasticity:** The model assumes constant variance of residuals. Some heteroscedasticity may exist across store types.
-- **No multicollinearity:** Predictors are assumed to be sufficiently independent. Footfall and marketing spend may have some correlation (higher-budget stores may be in higher-traffic areas) but variance inflation was not formally tested.
+- Linearity: The model assumes a linear relationship between each predictor and monthly sales. Non-linear relationships may exist but were not tested.
+- Independence: Observations are assumed to be independent. In practice, the same store appears across 4 months — this introduces mild autocorrelation that is not corrected for in this analysis.
+- Homoscedasticity: The model assumes constant variance of residuals. Some heteroscedasticity may exist across store types.
+- No multicollinearity: Predictors are assumed to be sufficiently independent. Footfall and marketing spend may have some correlation (higher-budget stores may be in higher-traffic areas) but variance inflation was not formally tested.
 
 ### Limitations
 | Limitation | Impact |
-|---|---|
+
 | Correlation ≠ causation | Regression shows association, not proof of cause and effect |
 | Short time window (4 months) | Cannot assess seasonality, year-on-year trends, or long-term effects |
 | 14 missing values imputed | Results may shift slightly with complete data |
